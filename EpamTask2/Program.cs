@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using EpamTask2;
 
-namespace EpamTask2
+namespace EpamTask2.ClassesFolder
 {
     class Program
     {
         static void Main(string[] args)
         {
-            
         }
     }
 }

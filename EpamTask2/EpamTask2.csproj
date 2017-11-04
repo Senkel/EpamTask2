@@ -44,12 +44,14 @@
   <ItemGroup>
     <Compile Include="ClassesFolder\Paragraph.cs" />
     <Compile Include="ClassesFolder\Sentence.cs" />
+    <Compile Include="ClassesFolder\Text.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ClassesFolder\Word.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

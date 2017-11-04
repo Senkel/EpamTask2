@@ -23,7 +23,7 @@ namespace EpamTask2.ClassesFolder
 
             int i = 0;
 
-
+           
             bool quotes = false;
             foreach (char symbol in line)
             {
@@ -41,6 +41,11 @@ namespace EpamTask2.ClassesFolder
                 }
                 i++;
             }
+        }
+        public void RemoveWord(Word word, string word_str, int j)
+        {
+            paragraph = paragraph.Replace(" " + word_str, "");
+            sentences[j].RemoveWord(word, word_str);
         }
 
     }
