@@ -22,8 +22,7 @@ namespace EpamTask2.ClassesFolder
             paragraph = line;
 
             int i = 0;
-
-           
+            
             bool quotes = false;
             foreach (char symbol in line)
             {

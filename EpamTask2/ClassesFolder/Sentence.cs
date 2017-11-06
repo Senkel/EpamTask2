@@ -10,7 +10,7 @@ namespace EpamTask2.ClassesFolder
         public string GetSentence { get { return sentence; } }
 
         List<Word> words = new List<Word>();
-        
+            
         public List<Word> Words { get { return words; } }
 
         public Sentence(string line)

@@ -9,24 +9,30 @@ namespace EpamTask2.ClassesFolder
 {
     class Word
     {
-        Regex vr = new Regex("[.?!)(,:]");
-        
         string tmp;
 
+        public string GetWords { get { return tmp; } }
 
-       public string GetWord { get { return tmp; } }
-
-         
-
-       
-               
+        public string GetWord
+        {
+            get
+            {
+                tmp = Regex.Replace(tmp,"[\")(.,:;!?]","");
+                //if (tmp.Contains('\"'))
+                //    tmp = tmp.Replace("\"", "");
+                //if (tmp.Contains('('))
+                //    tmp = tmp.Replace("(", "");
+                //if (tmp.Contains(')'))
+                //    tmp = tmp.Replace(")", "");
+                //if (tmp.Contains('.') || tmp.Contains(',') || tmp.Contains(':') || tmp.Contains(';') || tmp.Contains('?') || tmp.Contains('!'))
+                //    tmp = tmp.Substring(0, tmp.Length - 1);
+                return tmp;
+            }
+        }
 
         public Word(string line)
-            {
+        {
             tmp = line;
-            //if (vr.IsMatch(word))
-            //    word = vr.Replace(word,"");
-            //GetPunctuation = Regex.Replace(word, "[A-z0-9]", "");//non
         }
-        }
-    } 
+    }
+}

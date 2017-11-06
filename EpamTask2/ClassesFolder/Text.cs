@@ -39,9 +39,9 @@ namespace EpamTask2.ClassesFolder
                 {
                     for (int k = 0; k < paragraphs[i].Sentences[j].Words.Count; k++)
                     {
-                        string word = paragraphs[i].Sentences[j].Words[k].GetWord;
+                        string word = paragraphs[i].Sentences[j].Words[k].GetWords;
 
-                        if (line.Length + word.Length > 76)
+                        if (line.Length + word.Length > 77)
                         {
                             lines.Add(line);
                             line = "";
@@ -141,7 +141,7 @@ namespace EpamTask2.ClassesFolder
                         {
                             if (paragraphs[i].Sentences[j].Words[k].GetWord.Length == length)
                             {
-                                paragraphs[i].Sentences[j].ReplaceWord(substring, paragraphs[i].Sentences[j].Words[k].GetWord);
+                                paragraphs[i].Sentences[j].ReplaceWord(substring, paragraphs[i].Sentences[j].Words[k].GetWords);
                                 replaced = true;
                             }
                         }
