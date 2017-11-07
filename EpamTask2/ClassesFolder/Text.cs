@@ -29,10 +29,10 @@ namespace EpamTask2.ClassesFolder
 
         public List<string> GetFullText()
         {
-            
+
             List<string> lines = new List<string>();
             string line = "";
-           
+
             for (int i = 0; i < paragraphs.Count; i++)
             {
                 for (int j = 0; j < paragraphs[i].Sentences.Count; j++)
@@ -62,7 +62,7 @@ namespace EpamTask2.ClassesFolder
             return lines;
         }
 
-        public Dictionary<Sentence,int> SentencesInAscendingForm()
+        public Dictionary<Sentence, int> SentencesInAscendingForm()
         {
             Dictionary<Sentence, int> sentences = new Dictionary<Sentence, int>();
 
@@ -74,7 +74,7 @@ namespace EpamTask2.ClassesFolder
                 }
             }
 
-            return sentences.OrderBy(pair => pair.Value).ToDictionary(pair => pair.Key,pair=>pair.Value);
+            return sentences.OrderBy(pair => pair.Value).ToDictionary(pair => pair.Key, pair => pair.Value);
         }
 
         public List<string> WordsFromQuestions(int length)
@@ -90,7 +90,7 @@ namespace EpamTask2.ClassesFolder
                         for (int k = 0; k < paragraphs[i].Sentences[j].Words.Count; k++)
                         {
                             string tmp = paragraphs[i].Sentences[j].Words[k].GetWord;
-                            
+
                             if (tmp.Length == length && !words.Contains(tmp) && tmp != "-")
                                 words.Add(tmp);
                         }
@@ -112,7 +112,7 @@ namespace EpamTask2.ClassesFolder
                     for (int k = 0; k < paragraphs[i].Sentences[j].Words.Count; k++)
                     {
                         string tmp = paragraphs[i].Sentences[j].Words[k].GetWord;
-                        
+
                         string consonant_letters = "BbCcDdFfGgHhJjKkLlMmNnPpQqRrSsTtVvWwXxZz";
                         if (consonant_letters.Contains(tmp[0]) && tmp.Length == length && tmp != "-")
                         {
@@ -141,7 +141,7 @@ namespace EpamTask2.ClassesFolder
                         {
                             if (paragraphs[i].Sentences[j].Words[k].GetWord.Length == length)
                             {
-                                paragraphs[i].Sentences[j].ReplaceWord(substring, paragraphs[i].Sentences[j].Words[k].GetWords);
+                                paragraphs[i].Sentences[j].ReplaceWord(substring, paragraphs[i].Sentences[j].Words[k].GetWord);
                                 replaced = true;
                             }
                         }
@@ -155,9 +155,24 @@ namespace EpamTask2.ClassesFolder
                 return false;
         }
 
-        
-
-        
-        
+        public List<string> GetWords()
+        {
+            List<string> words = new List<string>();
+            for (int i = 0; i < paragraphs.Count; i++)
+            {
+                for (int j = 0; j < paragraphs[i].Sentences.Count; j++)
+                {
+                    for (int k = 0; k < paragraphs[i].Sentences[j].Words.Count; k++)
+                    {
+                        string tmp = paragraphs[i].Sentences[j].Words[k].GetWord;
+                        if (!words.Contains(tmp.ToUpper()) && !tmp.Contains("-"))
+                            words.Add(tmp.ToUpper());
+                    }
+                    
+                }
+            }
+            words.Sort();
+            return words;
+        }
     }
 }

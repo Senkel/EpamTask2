@@ -32,15 +32,17 @@ namespace EpamTask2.ClassesFolder
                 {
                     if (!quotes)
                     {
-                        Sentence tmp = new Sentence(line.Substring(0, i + 1).Trim());
+                        Sentence tmp = new Sentence(line.Substring(0, i+1).Trim());
                         sentences.Add(tmp);
                         line = line.Substring(i + 1);
-                        i = -1;
+                        i=-1;
                     }
                 }
                 i++;
             }
         }
+
+
         public void RemoveWord(Word word, string word_str, int j)
         {
             paragraph = paragraph.Replace(" " + word_str, "");

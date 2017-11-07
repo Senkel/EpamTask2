@@ -21,7 +21,7 @@ namespace EpamTask2.ClassesFolder
 
         static void ChooseTask(Text txt)
         {
-            Console.Write("Enter number of the task (from 1 to 4): ");
+            Console.Write("Enter number of the task (from 1 to 5): ");
             string task = Console.ReadLine();
             if (task == "1")
                 SentencesInAscendingOrder(txt);
@@ -31,7 +31,8 @@ namespace EpamTask2.ClassesFolder
                 RemoveCertainWords(txt);
             else if (task == "4")
                 ReplaceWithSubstring(txt);
-           
+            else if (task == "5")
+                Concordance(txt);
             else
                 Console.Clear();
         }
@@ -78,7 +79,7 @@ namespace EpamTask2.ClassesFolder
                 for (int i = 0; i < item.Key.Words.Count; i++)
                 {
                     string word = item.Key.Words[i].GetWords;
-                    if (line_length + word.Length > 77 )
+                    if (line_length + word.Length > 77)
                     {
                         Console.WriteLine();
                         line_length = 0;
@@ -124,7 +125,7 @@ namespace EpamTask2.ClassesFolder
                 Console.WriteLine("THERE ARE NO WORDS OF THIS LENGTH");
 
             foreach (string item in words)
-                Console.WriteLine("> " + item);
+                Console.WriteLine("> {0} ", item);
 
             PrintLine();
             PrintLine();
@@ -169,7 +170,7 @@ namespace EpamTask2.ClassesFolder
                 PrintLine();
                 Console.WriteLine("DELETED WORDS: ");
                 foreach (string word in deleted_words)
-                    Console.WriteLine("> {0}",word);
+                    Console.WriteLine("> {0}", word);
                 Console.Write("\n");
                 PrintFullText(txt, "MODIFIED TEXT");
             }
@@ -228,7 +229,54 @@ namespace EpamTask2.ClassesFolder
 
             EndOfAction();
         }
+        static void Concordance(Text txt)
+        {
+            PrintLine();
+            PrintLine();
+            Console.WriteLine("Task 5. CONCORDANCE: ");
+            PrintLine();
 
-       
+            List<string> lines = txt.GetFullText();
+            List<string> words = txt.GetWords();
+
+            char last_letter = '0';
+
+            foreach (string word in words)
+            {
+                if (word[0] != last_letter)
+                {
+                    if (word[0] != 'A')
+                        Console.Write('\n');
+                    Console.WriteLine("                                     [{0}]", word[0]);
+                    last_letter = word[0];
+                }
+
+                List<int> positions = new List<int>();
+                for (int i = 0; i < lines.Count; i++)
+                {
+                    String[] words_arr = lines[i].ToLower().Split(new char[] { ' ', '.', ',', '?', '!', '(', ')', '\"' }, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (string item in words_arr)
+                    {
+                        if (item == word.ToLower())
+                            positions.Add(i + 1);
+                    }
+                }
+
+                Console.Write(word.ToLower() + " ");
+                Console.Write('.');
+                for (int i = 0; i < 74 - word.Length - positions.Count / 10 - positions.Count * 2 - 1; i++)
+                    Console.Write('.');
+                Console.Write(" {0} -", positions.Count);
+                foreach (int position in positions)
+                    Console.Write(" " + (position + 5) / 4);
+                Console.Write('\n');
+            }
+
+            PrintLine();
+            PrintLine();
+
+            EndOfAction();
+
+        }
     }
 }

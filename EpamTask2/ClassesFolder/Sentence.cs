@@ -16,12 +16,13 @@ namespace EpamTask2.ClassesFolder
         public Sentence(string line)
         {
             sentence = line;
+
             String[] words_arr = line.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             foreach (string item in words_arr)
             {
                 Word tmp = new Word(item);
                 words.Add(tmp);
-            }
+            } 
         }
         public void RemoveWord(Word word, string word_str)
         {
