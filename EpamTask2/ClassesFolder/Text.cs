@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace EpamTask2.ClassesFolder
@@ -165,10 +166,10 @@ namespace EpamTask2.ClassesFolder
                     for (int k = 0; k < paragraphs[i].Sentences[j].Words.Count; k++)
                     {
                         string tmp = paragraphs[i].Sentences[j].Words[k].GetWord;
-                        if (!words.Contains(tmp.ToUpper()) && !tmp.Contains("-"))
+                        if (!words.Contains(tmp.ToUpper()) && !tmp.Contains("-") && !Regex.IsMatch(tmp, "[0-9]"))
                             words.Add(tmp.ToUpper());
                     }
-                    
+
                 }
             }
             words.Sort();

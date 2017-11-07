@@ -245,9 +245,9 @@ namespace EpamTask2.ClassesFolder
             {
                 if (word[0] != last_letter)
                 {
-                    if (word[0] != 'A')
-                        Console.Write('\n');
-                    Console.WriteLine("                                     [{0}]", word[0]);
+                    if (word[0] != 'B')
+                       // Console.Write('\n');
+                    Console.WriteLine("{0,40}", word[0]);
                     last_letter = word[0];
                 }
 
@@ -263,20 +263,21 @@ namespace EpamTask2.ClassesFolder
                 }
 
                 Console.Write(word.ToLower() + " ");
-                Console.Write('.');
-                for (int i = 0; i < 74 - word.Length - positions.Count / 10 - positions.Count * 2 - 1; i++)
+                //Console.Write('.');
+                for (int i = 0; i < 74 - word.Length - positions.Count / 10; i++)
                     Console.Write('.');
                 Console.Write(" {0} -", positions.Count);
                 foreach (int position in positions)
-                    Console.Write(" " + (position + 5) / 4);
-                Console.Write('\n');
+                        Console.Write(" " + (position + 5) / 4);
+                   Console.Write('\n');
+                }
+
+                PrintLine();
+                PrintLine();
+
+                EndOfAction();
+
             }
-
-            PrintLine();
-            PrintLine();
-
-            EndOfAction();
-
         }
     }
-}
+
