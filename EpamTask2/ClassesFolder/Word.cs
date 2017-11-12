@@ -18,14 +18,7 @@ namespace EpamTask2.ClassesFolder
             get
             {
                 tmp = Regex.Replace(tmp,"[\")(.,:;!?]","");
-                //if (tmp.Contains('\"'))
-                //    tmp = tmp.Replace("\"", "");
-                //if (tmp.Contains('('))
-                //    tmp = tmp.Replace("(", "");
-                //if (tmp.Contains(')'))
-                //    tmp = tmp.Replace(")", "");
-                //if (tmp.Contains('.') || tmp.Contains(',') || tmp.Contains(':') || tmp.Contains(';') || tmp.Contains('?') || tmp.Contains('!'))
-                //    tmp = tmp.Substring(0, tmp.Length - 1);
+                
                 return tmp;
             }
         }

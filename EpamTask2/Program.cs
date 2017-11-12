@@ -236,48 +236,67 @@ namespace EpamTask2.ClassesFolder
             Console.WriteLine("Task 5. CONCORDANCE: ");
             PrintLine();
 
-            List<string> lines = txt.GetFullText();
-            List<string> words = txt.GetWords();
-
-            char last_letter = '0';
-
-            foreach (string word in words)
+            using (System.IO.StreamWriter file =
+            new System.IO.StreamWriter(@"E:\my file.txt"))
             {
-                if (word[0] != last_letter)
-                {
-                    if (word[0] != 'B')
-                       // Console.Write('\n');
-                    Console.WriteLine("{0,40}", word[0]);
-                    last_letter = word[0];
-                }
 
-                List<int> positions = new List<int>();
-                for (int i = 0; i < lines.Count; i++)
+
+                List<string> lines = txt.GetFullText();
+                List<string> words = txt.GetWords();
+
+                char last_letter = '!';
+
+                foreach (string word in words)
                 {
-                    String[] words_arr = lines[i].ToLower().Split(new char[] { ' ', '.', ',', '?', '!', '(', ')', '\"' }, StringSplitOptions.RemoveEmptyEntries);
-                    foreach (string item in words_arr)
+                    if (word[0] != last_letter)
                     {
-                        if (item == word.ToLower())
-                            positions.Add(i + 1);
+
+                        Console.WriteLine("{0,40}", word[0]);
+                        file.WriteLine("{0,40}", word[0]);
+                        last_letter = word[0];
                     }
-                }
 
-                Console.Write(word.ToLower() + " ");
-                //Console.Write('.');
-                for (int i = 0; i < 74 - word.Length - positions.Count / 10; i++)
-                    Console.Write('.');
-                Console.Write(" {0} -", positions.Count);
-                foreach (int position in positions)
+                    List<int> positions = new List<int>();
+                    for (int i = 0; i < lines.Count; i++)
+                    {
+                        String[] words_arr = lines[i].ToLower().Split(new char[] { ' ', '.', ',', '?', '!', '(', ')', '\"' }, StringSplitOptions.RemoveEmptyEntries);
+                        foreach (string item in words_arr)
+                        {
+                            if (item == word.ToLower())
+                                positions.Add(i);
+                        }
+                    }
+
+                    Console.Write(word.ToLower() + " ");
+                    file.Write(word.ToLower() + " ");
+                    for (int i = 0; i < 76 - word.Length - positions.Count / 10 - positions.Count * 2 - 1; i++)
+                    {
+
+                        Console.Write('.');
+                        file.Write('.');
+                    }
+
+                    Console.Write(" {0}: ", positions.Count);
+                    file.Write(" {0} :", positions.Count);
+                    foreach (int position in positions)
+                    {
+
                         Console.Write(" " + (position + 5) / 4);
-                   Console.Write('\n');
-                }
+                        file.Write(" " + (position + 5) / 4);
 
+                    }
+
+                    Console.Write('\n');
+                    file.WriteLine();
+                }
+            }
                 PrintLine();
                 PrintLine();
 
                 EndOfAction();
 
-            }
+            
         }
     }
+}
 

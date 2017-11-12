@@ -10,9 +10,7 @@ namespace EpamTask2.ClassesFolder
     class Paragraph
     {
         string paragraph;
-
-        public string GetParagraph { get { return paragraph; } }
-
+        
         List<Sentence> sentences = new List<Sentence>();
 
         public List<Sentence> Sentences { get { return sentences; } }

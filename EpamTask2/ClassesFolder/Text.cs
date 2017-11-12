@@ -175,5 +175,6 @@ namespace EpamTask2.ClassesFolder
             words.Sort();
             return words;
         }
+        
     }
 }
