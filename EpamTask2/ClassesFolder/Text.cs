@@ -142,7 +142,7 @@ namespace EpamTask2.ClassesFolder
                         {
                             if (paragraphs[i].Sentences[j].Words[k].GetWord.Length == length)
                             {
-                                paragraphs[i].Sentences[j].ReplaceWord(substring, paragraphs[i].Sentences[j].Words[k].GetWord);
+                                paragraphs[i].Sentences[j].ReplaceWord(paragraphs[i].Sentences[j].Words[k].GetWord, substring);
                                 replaced = true;
                             }
                         }
@@ -167,7 +167,7 @@ namespace EpamTask2.ClassesFolder
                     {
                         string tmp = paragraphs[i].Sentences[j].Words[k].GetWord;
                         if (!words.Contains(tmp.ToUpper()) && !tmp.Contains("-") && !Regex.IsMatch(tmp, "[0-9]"))
-                            words.Add(tmp.ToUpper());
+                            words.Add(tmp.ToUpper());              
                     }
 
                 }

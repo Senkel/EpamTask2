@@ -35,7 +35,7 @@ namespace EpamTask2.ClassesFolder
                 words.Add(tmp);
             }
         }
-        public void ReplaceWord(string substring, string word)
+        public void ReplaceWord( string word, string substring)
         {
             sentence = sentence.Replace(word, substring);
             words.Clear();

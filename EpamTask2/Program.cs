@@ -239,8 +239,6 @@ namespace EpamTask2.ClassesFolder
             using (System.IO.StreamWriter file =
             new System.IO.StreamWriter(@"E:\my file.txt"))
             {
-
-
                 List<string> lines = txt.GetFullText();
                 List<string> words = txt.GetWords();
 
@@ -250,7 +248,6 @@ namespace EpamTask2.ClassesFolder
                 {
                     if (word[0] != last_letter)
                     {
-
                         Console.WriteLine("{0,40}", word[0]);
                         file.WriteLine("{0,40}", word[0]);
                         last_letter = word[0];
@@ -269,33 +266,32 @@ namespace EpamTask2.ClassesFolder
 
                     Console.Write(word.ToLower() + " ");
                     file.Write(word.ToLower() + " ");
+
                     for (int i = 0; i < 76 - word.Length - positions.Count / 10 - positions.Count * 2 - 1; i++)
                     {
-
                         Console.Write('.');
                         file.Write('.');
                     }
 
                     Console.Write(" {0}: ", positions.Count);
-                    file.Write(" {0} :", positions.Count);
+                    file.Write(" {0} : ", positions.Count);
+
                     foreach (int position in positions)
                     {
-
                         Console.Write(" " + (position + 5) / 4);
                         file.Write(" " + (position + 5) / 4);
-
                     }
 
                     Console.Write('\n');
                     file.WriteLine();
                 }
             }
-                PrintLine();
-                PrintLine();
+            PrintLine();
+            PrintLine();
 
-                EndOfAction();
+            EndOfAction();
 
-            
+
         }
     }
 }
